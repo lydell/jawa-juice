@@ -78,7 +78,7 @@ But remember that jawa-juice is DOM-based, so you probably won't generate a whol
 with it. More likely just a little partial here and there.
 
 [CoffeeKup]: https://github.com/mauricemach/coffeekup
-[Proxy]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy
+[`Proxy`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy
 
 
 Installation
