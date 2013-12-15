@@ -1,4 +1,6 @@
 ###
+Copyright 2013 Simon Lydell
+
 This file is part of jawa-juice.
 
 jawa-juice is free software: you can redistribute it and/or modify it under the terms of the GNU
