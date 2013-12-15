@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "scripts": {
+    "test": "brunch watch --server"
+  },
+  "dependencies": {
+    "brunch": "~1.7.7",
+    "auto-reload-brunch": "1.0 - 1.7",
+    "coffee-script-brunch": "1.0 - 1.7"
+  }
+}

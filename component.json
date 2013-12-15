@@ -1,0 +1,19 @@
+{
+  "name": "jawa-juice",
+  "version": "0.1.0",
+  "license": "GPLv3",
+  "description": "A small, CoffeeKup-like DOM-based templating language. Just for fun.",
+  "main": "lib/index.js",
+  "repo": "lydell/foo",
+  "keywords": [
+    "CoffeeKup",
+    "CoffeeCup",
+    "TeaCup",
+    "coffee-script",
+    "template",
+    "DOM"
+  ],
+  "scripts": [
+    "lib/index.js"
+  ]
+}
