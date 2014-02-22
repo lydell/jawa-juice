@@ -130,4 +130,4 @@ Then, have a look at the [tests](test/index.coffee). They're straight-forward an
 License
 =======
 
-[GPLv3](COPYING)
+[The X11 “MIT” License](LICENSE).

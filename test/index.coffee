@@ -1,18 +1,5 @@
 ###
-Copyright 2013 Simon Lydell
-
-This file is part of jawa-juice.
-
-jawa-juice is free software: you can redistribute it and/or modify it under the terms of the GNU
-General Public License as published by the Free Software Foundation, either version 3 of the
-License, or (at your option) any later version.
-
-jawa-juice is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even
-the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
-Public License for more details.
-
-You should have received a copy of the GNU General Public License along with jawa-juice.  If not,
-see <http://www.gnu.org/licenses/>.
+Copyright 2013-2014 Simon Lydell
 ###
 
 render = require "src/index"
@@ -138,7 +125,7 @@ suite "render", ->
 					@p(class: ["a", "b", "c"])
 
 
-			test "concatenatenation", ->
+			test "concatenation", ->
 				equal '<p class="a b c d e f g"></p>', render ->
 					@p.a.b(class: "c d")(class: ["e", "f"]).g
 
@@ -220,8 +207,6 @@ suite "render", ->
 
 
 	test "plain text", ->
-		# Note: CoffeeScriptRedux does not allow standalone `@`. Use `this` instead. But that
-		# doesn't look as good of course.
 		equal 'text', render ->
 			@ "text"
 
