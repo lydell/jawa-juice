@@ -1,2 +1,2 @@
 module.exports = (locals)->
-	@p "Include with #{locals.foo}"
+  @p "Include with #{locals.foo}"

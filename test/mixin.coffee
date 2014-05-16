@@ -1,2 +1,2 @@
 module.exports = (name)->
-	@p "Mixined #{name}"
+  @p "Mixined #{name}"
