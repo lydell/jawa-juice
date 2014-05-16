@@ -1,5 +1,6 @@
 ###
-Copyright 2013-2014 Simon Lydell
+# Copyright 2013-2014 Simon Lydell
+# X11 (“MIT”) Licensed. (See LICENSE.)
 ###
 
 render = require "src/index"
