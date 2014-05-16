@@ -4,7 +4,10 @@
   "license": "MIT",
   "description": "A small, CoffeeKup-like DOM-based templating language. Just for fun.",
   "main": "lib/index.js",
-  "repo": "lydell/foo",
+  "repo": "lydell/jawa-juice",
+  "scripts": [
+    "lib/index.js"
+  ],
   "keywords": [
     "CoffeeKup",
     "CoffeeCup",
@@ -12,8 +15,5 @@
     "coffee-script",
     "template",
     "DOM"
-  ],
-  "scripts": [
-    "lib/index.js"
   ]
 }

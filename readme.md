@@ -102,8 +102,11 @@ document.body.appendChild(fragment)
 ```
 
 
+Development
+===========
+
 Tests
-=====
+-----
 
 [brunch] is used for testing. You need either `brunch` (`npm install -g brunch`), or
 `./node_modules/.bin` in your path.
@@ -118,6 +121,14 @@ the tests.
 
 [brunch]: http://brunch.io
 
+x-package.json5
+---------------
+
+package.json and component.json are both generated from x-package.json5 by
+using [`xpkg`]. Only edit x-package.json5, and remember to run `xpkg` before
+committing!
+
+[`xpkg`]: https://github.com/kof/node-xpkg
 
 Language reference
 ==================

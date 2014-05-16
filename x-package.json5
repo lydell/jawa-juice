@@ -1,0 +1,34 @@
+{
+  name: "jawa-juice",
+  version: "0.2.0",
+  license: "MIT",
+  description: "A small, CoffeeKup-like DOM-based templating language. Just for fun.",
+  main: "lib/index.js",
+  overlay: {
+    npm: {
+      private: true,
+      scripts: {
+        test: "brunch watch --server"
+      },
+      dependencies: {
+        "brunch": "~1.7.7",
+        "auto-reload-brunch": "1.0 - 1.7",
+        "coffee-script-brunch": "1.0 - 1.7"
+      }
+    },
+    component: {
+      repo: "lydell/jawa-juice",
+      scripts: [
+        "lib/index.js"
+      ],
+      keywords: [
+        "CoffeeKup",
+        "CoffeeCup",
+        "TeaCup",
+        "coffee-script",
+        "template",
+        "DOM"
+      ]
+    }
+  }
+}
