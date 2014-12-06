@@ -239,10 +239,11 @@ suite "render", ->
           @p "end"
 
 
-    test "required", ->
-      equal '<p>Mixined foo</p>', render ->
-        mixin = require("test/mixin").bind(this)
-        mixin "foo"
+    test "`require`d", ->
+      equal '<div><p>Mixined foo</p></div>', render ->
+        mixin = require("test/mixin")
+        @div ->
+          mixin.call @, "foo"
 
 
   suite "custom document", ->

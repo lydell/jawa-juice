@@ -49,8 +49,8 @@ module.exports = ({title, description, path, user, post})->
         @p "Divitis kills! Inline styling too."
 
       @section ->
-        breadcrumb = require("mixins/breadcrumb").bind(this)
-        breadcrumb separator: ">", clickable: yes
+        breadcrumb = require("mixins/breadcrumb")
+        breadcrumb.call @, separator: ">", clickable: yes
 
         @h2 "Let's count to 10:"
         @p i for i in [1..10]
