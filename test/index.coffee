@@ -11,7 +11,7 @@ equal = (expected, fragment)->
   actual = container.innerHTML
   return if expected == actual
   console.dir {expected, actual}
-  throw new Error "Expected `#{expected}` to equal `#{actual}`"
+  throw new Error "Expected `#{actual}` to equal `#{expected}`"
 
 suite "render", ->
 
