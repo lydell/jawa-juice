@@ -7,7 +7,7 @@
 # Silly things like `@foo::("content").id` is not prohibited, but discouraged, for example.
 
 class Renderer
-  constructor: (@locals)->
+  constructor: (@locals, @document)->
 
   identifier: {}
 
@@ -22,7 +22,7 @@ class Renderer
 
   createElement: (tag)->
     setId = no
-    element = { node: document.createElement(@underscoresToHyphens(tag)), @identifier }
+    element = { node: @document.createElement(@underscoresToHyphens(tag)), @identifier }
     element.proxy = new Proxy(@updateParent.bind(this, element),
       get: (target, prop)=>
         prop = @underscoresToHyphens(prop)
@@ -49,7 +49,7 @@ class Renderer
       when typeof arg is "function"
         @render(arg, parent)
       else
-        parent.node.appendChild(document.createTextNode(arg))
+        parent.node.appendChild(@document.createTextNode(arg))
 
     parent.proxy
 
@@ -72,7 +72,9 @@ class Renderer
   underscoresToHyphens: (string)-> string.replace(/_/g, "-")
 
 
-module.exports = (fn, locals)->
-  fragment = document.createDocumentFragment()
-  new Renderer(locals).render(fn, {node: fragment})
+module.exports = (doc, fn, locals)->
+  if typeof doc is "function"
+    [doc, fn, locals] = [document, doc, fn]
+  fragment = doc.createDocumentFragment()
+  new Renderer(locals, doc).render(fn, {node: fragment})
   fragment

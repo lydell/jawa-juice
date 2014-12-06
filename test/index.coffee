@@ -243,3 +243,37 @@ suite "render", ->
       equal '<p>Mixined foo</p>', render ->
         mixin = require("test/mixin").bind(this)
         mixin "foo"
+
+
+  suite "custom document", ->
+
+    class Document
+      constructor: -> @calls = 0
+      createDocumentFragment: -> {appendChild: => @calls++}
+      createElement: -> @calls++
+      assertCalls: (calls)->
+        unless @calls == calls
+          throw new Error "Expected `render` to take a custom `document`."
+
+
+    test "simple", ->
+      doc = new Document
+      render doc, ->
+        @p
+      doc.assertCalls(2)
+
+
+    test "bind", ->
+      doc = new Document
+      localRender = render.bind(undefined, doc)
+      localRender ->
+        @p
+      doc.assertCalls(2)
+
+
+    test "locals", ->
+      locals =
+        foo: "bar"
+      template = (locals)->
+        @p locals.foo
+      equal '<p>bar</p>', render document, template, locals
