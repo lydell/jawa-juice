@@ -45,7 +45,7 @@ module.exports = ({title, description, path, user, post})->
               else
                 @a(href: "/commoners") "Just Stuff"
 
-      @div::myid.myclass.anotherclass(style: "position: fixed") ->
+      @div.myclass.anotherclass(id: "myid", style: "position: fixed") ->
         @p "Divitis kills! Inline styling too."
 
       @section ->
@@ -66,8 +66,8 @@ module.exports = ({title, description, path, user, post})->
             @ block
 
         form_to id: "to-form", post, ->
-          @textbox::title(label: "Title:")
-          @textbox::author(label: "Author:")
+          @textbox(id: "title", label: "Title:")
+          @textbox(id: "author", label: "Author:")
           @input(type: "submit") "Save"
 
       @footer ->

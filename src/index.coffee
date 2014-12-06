@@ -3,9 +3,6 @@
 # X11 (“MIT”) Licensed. (See LICENSE.)
 ###
 
-# Note: I've tried to keep it really simple, and tiny. Therefore, the syntax is really permissive.
-# Silly things like `@foo::("content").id` is not prohibited, but discouraged, for example.
-
 class Renderer
   constructor: (@locals, @document)->
 
@@ -21,21 +18,13 @@ class Renderer
     fn.call(context, @locals)
 
   createElement: (tag)->
-    setId = no
     element = { node: @document.createElement(@underscoresToHyphens(tag)), @identifier }
     element.proxy = new Proxy(@updateParent.bind(this, element),
       get: (target, prop)=>
-        prop = @underscoresToHyphens(prop)
-        switch
-          when prop is ""
-            return element
-          when setId
-            element.node.id = prop
-            setId = no
-          when prop is "prototype"
-            setId = yes
-          else
-            element.node.classList.add(prop)
+        if prop is ""
+          return element
+        else
+          element.node.classList.add(@underscoresToHyphens(prop))
         element.proxy
     )
     element

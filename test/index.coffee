@@ -45,18 +45,7 @@ suite "render", ->
         @p.a.b.c
 
 
-    test "add id", ->
-      equal '<p id="id"></p>', render ->
-        @p::id
-
-      equal '<p id="c"></p>', render ->
-        @p::a::b::c
-
-
     test "underscores to hyphens", ->
-      equal '<p id="a-b-c"></p>', render ->
-        @p::a_b_c
-
       equal '<p class="a-b-c"></p>', render ->
         @p.a_b_c
 
@@ -150,9 +139,9 @@ suite "render", ->
         @p(attributes)
 
 
-    test "mix classes, id and attributes", ->
-      equal '<p e="4" d="3" c="1" class="a b c d" id="id2"></p>', render ->
-        @p::id.a.b(c: 1, d: 2, class: "b c").d::id2(d: 3)(e: 4)
+    test "mix classes and attributes", ->
+      equal '<p e="4" d="3" c="1" class="a b c d"></p>', render ->
+        @p.a.b(c: 1, d: 2, class: "b c").d(d: 3)(e: 4)
 
 
   suite "content", ->
@@ -194,9 +183,6 @@ suite "render", ->
 
 
   test "both attributes and content", ->
-    equal '<p id="id">text</p>', render ->
-      @p::id "text"
-
     equal '<p class="class">text</p>', render ->
       @p.class "text"
 
