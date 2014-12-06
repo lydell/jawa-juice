@@ -55,10 +55,10 @@ module.exports = ({title, description, path, user, post})->
         @h2 "Let's count to 10:"
         @p i for i in [1..10]
 
-        form_to = (attributes, post, block)=>
+        form_to = (attributes, post, block) =>
           @form(attributes)(method: "post") block
         # another way ...
-        form_to = (attributes, post, block)=>
+        form_to = (attributes, post, block) =>
           @form(attributes)(method: "post") ->
             @label
               @ "Date:"
