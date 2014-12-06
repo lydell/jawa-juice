@@ -3,7 +3,7 @@
 # X11 (“MIT”) Licensed. (See LICENSE.)
 ###
 
-render = require "src/index"
+render = require("../index")
 
 equal = (expected, fragment)->
   container = document.createElement("div")

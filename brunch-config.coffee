@@ -1,6 +1,6 @@
 exports.config =
   paths:
-    watched: ["src", "test"]
+    watched: ["index.coffee", "test"]
   files:
     javascripts:
       joinTo: "tests.js"

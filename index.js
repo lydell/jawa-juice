@@ -12,6 +12,7 @@ Renderer = (function() {
   function Renderer(locals, document) {
     this.locals = locals;
     this.document = document;
+    this.mixins = new Map;
   }
 
   Renderer.prototype.identifier = {};
@@ -22,9 +23,17 @@ Renderer = (function() {
       get: (function(_this) {
         return function(target, tag) {
           var element;
+          if (_this.mixins.has(tag)) {
+            return Function.prototype.call.bind(_this.mixins.get(tag), context);
+          }
           element = _this.createElement(tag);
           parent.node.appendChild(element.node);
           return element.proxy;
+        };
+      })(this),
+      set: (function(_this) {
+        return function(target, name, value) {
+          return _this.mixins.set(name, value);
         };
       })(this)
     });
@@ -32,8 +41,7 @@ Renderer = (function() {
   };
 
   Renderer.prototype.createElement = function(tag) {
-    var element, setId;
-    setId = false;
+    var element;
     element = {
       node: this.document.createElement(this.underscoresToHyphens(tag)),
       identifier: this.identifier
@@ -41,19 +49,10 @@ Renderer = (function() {
     element.proxy = new Proxy(this.updateParent.bind(this, element), {
       get: (function(_this) {
         return function(target, prop) {
-          prop = _this.underscoresToHyphens(prop);
-          switch (false) {
-            case prop !== "":
-              return element;
-            case !setId:
-              element.node.id = prop;
-              setId = false;
-              break;
-            case prop !== "prototype":
-              setId = true;
-              break;
-            default:
-              element.node.classList.add(prop);
+          if (prop === "") {
+            return element;
+          } else {
+            element.node.classList.add(_this.underscoresToHyphens(prop));
           }
           return element.proxy;
         };
