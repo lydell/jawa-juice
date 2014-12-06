@@ -225,11 +225,18 @@ suite "render", ->
           @p "end"
 
 
-    test "`require`d", ->
+    test "`require`d (explicit `.call`)", ->
       equal '<div><p>Mixined foo</p></div>', render ->
         mixin = require("test/mixin")
         @div ->
           mixin.call @, "foo"
+
+
+    test "`require`d (`@`-assigned)", ->
+      equal '<div><p>Mixined foo</p></div>', render ->
+        @mixin = require("test/mixin")
+        @div ->
+          @mixin "foo"
 
 
   suite "custom document", ->

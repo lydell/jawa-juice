@@ -5,15 +5,20 @@
 
 class Renderer
   constructor: (@locals, @document)->
+    @mixins = new Map
 
   identifier: {}
 
   render: (fn, parent)->
     context = new Proxy(@updateParent.bind(this, parent),
       get: (target, tag)=>
+        if @mixins.has(tag)
+          return Function::call.bind(@mixins.get(tag), context)
         element = @createElement(tag)
         parent.node.appendChild(element.node)
         element.proxy
+      set: (target, name, value)=>
+        @mixins.set(name, value)
     )
     fn.call(context, @locals)
 
