@@ -23,12 +23,16 @@ Renderer = (function() {
       get: (function(_this) {
         return function(target, tag) {
           var element;
-          if (_this.mixins.has(tag)) {
-            return Function.prototype.call.bind(_this.mixins.get(tag), context);
+          switch (false) {
+            case tag !== "$":
+              return parent.node;
+            case !_this.mixins.has(tag):
+              return Function.prototype.call.bind(_this.mixins.get(tag), context);
+            default:
+              element = _this.createElement(tag);
+              parent.node.appendChild(element.node);
+              return element.proxy;
           }
-          element = _this.createElement(tag);
-          parent.node.appendChild(element.node);
-          return element.proxy;
         };
       })(this),
       set: (function(_this) {

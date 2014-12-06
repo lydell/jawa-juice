@@ -4,6 +4,7 @@
   argument.
 - Added: You can now assign mixins onto `@`. This ensures that the mixins are
   called with the correct context. It also looks nice.
+- Added: The `@$` parent reference, which returns the actual DOM node.
 - Removed: The `::id` shortcut. (Backwards-incompatible change.)
 - Removed: component support.
 - Added: npm support.

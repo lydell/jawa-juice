@@ -11,12 +11,15 @@ class Renderer
 
   render: (fn, parent)->
     context = new Proxy(@updateParent.bind(this, parent),
-      get: (target, tag)=>
-        if @mixins.has(tag)
-          return Function::call.bind(@mixins.get(tag), context)
-        element = @createElement(tag)
-        parent.node.appendChild(element.node)
-        element.proxy
+      get: (target, tag)=> switch
+        when tag is "$"
+          parent.node
+        when @mixins.has(tag)
+          Function::call.bind(@mixins.get(tag), context)
+        else
+          element = @createElement(tag)
+          parent.node.appendChild(element.node)
+          element.proxy
       set: (target, name, value)=>
         @mixins.set(name, value)
     )

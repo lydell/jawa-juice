@@ -271,3 +271,13 @@ suite "render", ->
       template = (locals)->
         @p locals.foo
       equal '<p>bar</p>', render document, template, locals
+
+
+  suite "parent reference", ->
+
+    test "insert unescaped HTML", ->
+      equal '<p>outside</p><p>foo<hr></p>', render ->
+        @p ->
+          @ "foo"
+          @$.insertAdjacentHTML("beforebegin", '<p>outside</p>')
+          @$.innerHTML += '<hr>'
