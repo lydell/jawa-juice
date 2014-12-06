@@ -1,4 +1,4 @@
-### Version 0.3.0 (Unreleased) ###
+### Version 0.3.0 (2014-12-06) ###
 
 - Added: You can now optionally pass the `document` to use as the first
   argument.
