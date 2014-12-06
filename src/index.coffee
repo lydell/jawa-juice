@@ -23,7 +23,9 @@ class Renderer
     fn.call(context, @locals)
 
   createElement: (tag)->
-    element = { node: @document.createElement(@underscoresToHyphens(tag)), @identifier }
+    element =
+      node: @document.createElement(@underscoresToHyphens(tag))
+      identifier: @identifier
     element.proxy = new Proxy(@updateParent.bind(this, element),
       get: (target, prop)=>
         if prop is ""

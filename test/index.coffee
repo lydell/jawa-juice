@@ -57,11 +57,11 @@ suite "render", ->
       equal '<p attribute="value"></p>', render ->
         @p attribute: "value"
 
-      equal '<p object="[object Object]" array="a,1" number="1" string="a"></p>', render ->
-        @p(string: "a", number: 1, array: ["a", 1], object: {})
+      equal '<p obj="[object Object]" arr="a,1" num="1" str="a"></p>', render ->
+        @p(str: "a", num: 1, arr: ["a", 1], obj: {})
 
-      equal '<p object="[object Object]" array="a,1" number="1" string="a"></p>', render ->
-        @p string: "a", number: 1, array: ["a", 1], object: {}
+      equal '<p obj="[object Object]" arr="a,1" num="1" str="a"></p>', render ->
+        @p str: "a", num: 1, arr: ["a", 1], obj: {}
 
 
     test "boolean attributes", ->
@@ -91,8 +91,8 @@ suite "render", ->
       equal '<p data-array="[&quot;a&quot;,1]"></p>', render ->
         @p(data: {array: ["a", 1]})
 
-      equal '<p data-object="{&quot;key&quot;:&quot;value&quot;}"></p>', render ->
-        @p(data: {object: {key: "value"}})
+      equal '<p data-obj="{&quot;key&quot;:&quot;value&quot;}"></p>', render ->
+        @p(data: {obj: {key: "value"}})
 
       equal '<p data-c="3" data-b="2" data-a="1"></p>', render ->
         @p(data: {a: 1, b: 2, c: 3})
